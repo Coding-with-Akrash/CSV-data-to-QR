@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entry QR Codes</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background:#f3f4f6; margin:20px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
+.card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.id { color:#2563eb; font-weight:bold; margin-bottom:8px; }
+.qr { width:180px; height:180px; border:2px solid #e5e7eb; border-radius:8px; padding:6px; background:#fff; }
+.fields { font-size:13px; color:#4b5563; margin-top:10px; }
+.fields div { margin:2px 0; }
+</style>
+</head>
+<body>
+<h1>Registered Entries</h1>
+<div class="grid">
+{% for e in entries %}
+<div class="card">
+<div class="id">{{ e.id }}</div>
+<img class="qr" src="data:image/png;base64,{{ e.qr }}" alt="{{ e.id }}">
+<div class="fields">
+{% for k,v in e.data.items() %}
+<div><strong>{{ k }}:</strong> {{ v }}</div>
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+</div>
+</body>
+</html>
