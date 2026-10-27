@@ -8,7 +8,7 @@ import qrcode
 import requests
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "templates"))
 
 SHEET_CSV_URL = os.environ.get(
     "SHEET_CSV_URL",
@@ -35,7 +35,10 @@ def make_qr(data):
 
 @app.route("/")
 def index():
-    rows, fields = fetch_rows()
+    try:
+        rows, fields = fetch_rows()
+    except Exception as e:
+        return f"Sheet fetch error: {e}", 500
     entries = []
     for i, row in enumerate(rows, start=1):
         uid = f"UW-TECNOVA-{i:03d}"
