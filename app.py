@@ -12,7 +12,7 @@ app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.abspa
 
 SHEET_CSV_URL = os.environ.get(
     "SHEET_CSV_URL",
-    "https://docs.google.com/spreadsheets/d/1JfyzynCtAg1sOBTGcQUwbyl8J5ZWfdAThQs5q7XhE1E/export?format=csv&gid=2016392907",
+    "https://docs.google.com/spreadsheets/d/1QekapgQjyjzut7o_yevTTvbTwTAUKqx_ZMtuFiYNl8Y/edit?resourcekey=&gid=683822780#gid=683822780",
 )
 
 
